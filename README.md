@@ -1,7 +1,7 @@
 meta-frostbite
 ================================
 
-A custom Yocto layer for Frostbite—a lightweight BeagleBone Black distribution built for the NewHaven 7-inch IPS LCD cape with capacitive touchscreen. Designed to keep things simple and fast.
+My own lightweight OpenEmbedded/Yocto Layer.
 
 What is Frostbite?
 -------------------------

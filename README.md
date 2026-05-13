@@ -1,49 +1,67 @@
-Meta-beagleboard
+meta-frostbite
 ================================
 
-Introduction
+A custom Yocto layer for Frostbite—a lightweight BeagleBone Black distribution built for the NewHaven 7-inch IPS LCD cape with capacitive touchscreen. Designed to keep things simple and fast.
+
+What is Frostbite?
 -------------------------
 
-The official OpenEmbedded/Yocto BSP layer for Beagleboard.org platforms.
+Frostbite is what I call my beaglebone with a screen connected. I wanted finer control of what goes into the image as well as to familiarize myself with the yocto system. My planned features are a github contributions showcase that lets you change the user and colors, as well as a generic UI for more apps.
 
-It is hosted on https://github.com/beagleboard/meta-beagleboard with the source repository at git://github.com/beagleboard/meta-beagleboard.git
+Can I just use linux or android and be fine? Yes. But I won't.
 
-The common-bsp layer depends on:
-
-	URI: git://git.openembedded.org/openembedded-core
-	layers: meta
-	branch: master
-
-And for machine_kernel_pr.bbclass:
-
-	URI: git://git.openembedded.org/meta-openembedded
-	layers: meta-oe
-	branch: master
-
-The meta-beagleboard-extras layer depends on:
-
-	URI: git://git.openembedded.org/openembedded-core
-	layers: meta
-	branch: master
-
-	URI: git://git.openembedded.org/meta-openembedded
-	layers: meta-oe
-	branch: master
-
-Please follow the recommended setup procedures of your OE distribution. For Angstrom that is http://www.angstrom-distribution.org/building-angstrom, other distros should have similar online resources.
-
-
-Contributing
+Hardware
 -------------------------
 
-The beagleboard mailinglist (beagleboard@googlegroups.com) is used for questions, comments and patch review. It is subscriber only, so please register before posting.
+This layer is configured for:
 
-Please use github for pull requests: https://github.com/beagleboard/meta-beagleboard/pulls
+- **BeagleBone Black** (AM335x ARM Cortex-A8)
+- **NewHaven 7-inch IPS LCD cape** with capacitive touchscreen
+  - Product page: <https://newhavendisplay.com/7-inch-ips-lcd-beaglebone-cape-with-capacitive-touchscreen/>
+- Optional: (TODO add the 3D Print here)
 
-Reporting bugs
+Building
 -------------------------
 
-The github issue tracker (https://github.com/beagleboard/meta-beagleboard/issues) is being used to keep track of bugs, but it recommended ask on the mailinglist (beagleboard@googlegroups.com) first.
+1. Clone the core OpenEmbedded/Yocto Layers:
 
-Maintainers: Koen Kooi <koen@beagleboard.org>
-             Jason Kridner <jkridner@beagleboard.org>
+```bash
+git clone -b kirkstone git://git.yoctoproject.org/bitbake
+git clone -b kirkstone git://git.yoctoproject.org/openembedded-core.git oe-core
+git clone -b kirkstone git://git.yoctoproject.org/meta-yocto.git
+git clone -b kirkstone https://github.com/beagleboard/meta-beagleboard.git
+git clone https://github.com/YOUR-USERNAME/meta-frostbite.git
+```
+
+1. Initialize and build
+
+```bash
+source oe-init-build-env build
+ 
+# Make sure conf/bblayers.conf includes meta-frostbite
+bitbake frostbite-image
+```
+
+The built image will be in `tmp/deploy/images/beaglebone/`.
+
+What's Inside
+-------------------------
+
+The `frostbite-image` recipe includes:
+
+- Linux kernel with NewHaven LCD cape drivers enabled
+- Framebuffer utilities for direct display access
+- Touch input support (via evdev/libinput)
+- Busybox for essential POSIX utilities
+- SSH server for headless management
+- Minimal init system (sysvinit)
+
+Maintainer
+-------------------------
+
+Andy Perez <perezandy2001@gmail.com>
+
+License
+-------------------------
+
+MIT License - see individual recipes for specifics.

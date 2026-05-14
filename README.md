@@ -23,14 +23,17 @@ This layer is configured for:
 Building
 -------------------------
 
+Cloning bitbake itself is deprecated, I had to follow this guide:
+[https://docs.yoctoproject.org/dev-manual/poky-manual-setup.html]
+I chronicled my steps here.
+
 1. Setup a workspace by cloning the core OpenEmbedded/Yocto Layers:
 
 ```bash
-mkdir -p frostbite && cd "$_"
-git clone -b kirkstone git://git.yoctoproject.org/bitbake
-git clone -b kirkstone git://git.yoctoproject.org/openembedded-core.git oe-core
-git clone -b kirkstone git://git.yoctoproject.org/meta-yocto.git
-git clone -b kirkstone https://github.com/beagleboard/meta-beagleboard.git
+mkdir -p frostbite/layers && cd "$_"
+git clone -b yocto-5.3.3 https://git.openembedded.org/bitbake
+git clone -b yocto-5.3.3 https://git.openembedded.org/openembedded-core
+git clone -b yocto-5.3.3 https://git.yoctoproject.org/meta-yocto
 git clone https://github.com/perezandy/meta-frostbite.git
 ```
 

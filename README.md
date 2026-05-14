@@ -23,14 +23,15 @@ This layer is configured for:
 Building
 -------------------------
 
-1. Clone the core OpenEmbedded/Yocto Layers:
+1. Setup a workspace by cloning the core OpenEmbedded/Yocto Layers:
 
 ```bash
+mkdir -p frostbite && cd "$_"
 git clone -b kirkstone git://git.yoctoproject.org/bitbake
 git clone -b kirkstone git://git.yoctoproject.org/openembedded-core.git oe-core
 git clone -b kirkstone git://git.yoctoproject.org/meta-yocto.git
 git clone -b kirkstone https://github.com/beagleboard/meta-beagleboard.git
-git clone https://github.com/YOUR-USERNAME/meta-frostbite.git
+git clone https://github.com/perezandy/meta-frostbite.git
 ```
 
 1. Initialize and build

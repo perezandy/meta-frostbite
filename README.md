@@ -40,9 +40,35 @@ git clone https://github.com/perezandy/meta-frostbite.git
 1. Initialize and build
 
 ```bash
-source oe-init-build-env build
+cd ../
+ln -s layers/meta-frostbite/env_setup.sh .
+source env_setup.sh # NOTE: This will put you in build/
  
 # Make sure conf/bblayers.conf includes meta-frostbite
+frostbite/
+├── build
+│   ├── bitbake-cookerdaemon.log
+│   ├── cache
+│   │   ├── hashserv.db
+│   │   ├── hashserv.db-shm
+│   │   └── hashserv.db-wal
+│   ├── conf
+│   │   ├── bblayers.conf   # <------- HERE
+│   │   ├── conf-notes.txt
+│   │   ├── conf-summary.txt
+│   │   ├── local.conf
+│   │   └── templateconf.cfg
+
+
+# Edit should look like so:
+BBLAYERS ?= " \
+  /home/.../frostbite/layers/openembedded-core/meta \
+  /home/.../frostbite/layers/openembedded-core/../meta-yocto/meta-poky \
+  /home/.../frostbite/layers/openembedded-core/../meta-yocto/meta-yocto-bsp/ \
+  /home/.../frostbite/layers/openembedded-core/../meta-frostbite/common-bsp/ \
+  "
+
+# Now build:
 bitbake frostbite-image
 ```
 

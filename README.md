@@ -62,10 +62,10 @@ frostbite/
 
 # Edit should look like so:
 BBLAYERS ?= " \
-  /home/.../frostbite/layers/openembedded-core/meta \
-  /home/.../frostbite/layers/openembedded-core/../meta-yocto/meta-poky \
-  /home/.../frostbite/layers/openembedded-core/../meta-yocto/meta-yocto-bsp/ \
-  /home/.../frostbite/layers/openembedded-core/../meta-frostbite/common-bsp/ \
+  ${BSPDIR}/layers/openembedded-core/meta \
+  ${BSPDIR}/layers/openembedded-core/../meta-yocto/meta-poky \
+  ${BSPDIR}/layers/openembedded-core/../meta-yocto/meta-yocto-bsp/ \
+  ${BSPDIR}/layers/openembedded-core/../meta-frostbite/common-bsp/ \
   "
 
 # Now build:

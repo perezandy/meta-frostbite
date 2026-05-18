@@ -263,3 +263,5 @@ Summary: 1 task failed:
 Summary: There were 2 WARNING messages.
 Summary: There were 2 ERROR messages, returning a non-zero exit code.
 ```
+
+I tried changing the std:gnu version but it did not work. Probably will switch to using docker instead
